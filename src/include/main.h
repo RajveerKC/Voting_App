@@ -5,6 +5,7 @@
 #define GLOBALS
 extern int currentPos;
 extern bool windowClosed;
+extern bool mouseOnText;
 #endif
 
 #define SCREEN_WIDTH 1280

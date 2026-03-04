@@ -5,6 +5,7 @@
 
 int currentPos = 0;
 bool windowClosed = false;
+bool mouseOnText = false;
 
 int main() {
 	InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Voting App");
@@ -18,6 +19,15 @@ int main() {
 			case 1:
 				loginScreen();
 				break;
+			case 2:
+				loginScreen();
+				break;
+		}
+		if (mouseOnText) {
+			SetMouseCursor(MOUSE_CURSOR_IBEAM);
+		}
+		else {
+			SetMouseCursor(MOUSE_CURSOR_DEFAULT);
 		}
 		EndDrawing();
 	}
