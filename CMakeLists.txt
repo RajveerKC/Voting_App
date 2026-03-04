@@ -59,6 +59,8 @@ add_executable(${PROJECT_NAME}
     ${APP_SOURCES}
 )
 
+target_link_libraries(${PROJECT_NAME} PRIVATE raylib)
+
 target_include_directories(${PROJECT_NAME} PRIVATE
     ${CMAKE_SOURCE_DIR}/src/include
     ${raygui_SOURCE_DIR}/src
