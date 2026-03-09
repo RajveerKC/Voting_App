@@ -20,7 +20,10 @@ int main() {
 				loginScreen();
 				break;
 			case 2:
-				loginScreen();
+				fptpScreen();
+				break;
+			case 3:
+				prScreen();
 				break;
 		}
 		if (mouseOnText) {

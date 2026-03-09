@@ -65,3 +65,12 @@ target_include_directories(${PROJECT_NAME} PRIVATE
     ${CMAKE_SOURCE_DIR}/src/include
     ${raygui_SOURCE_DIR}/src
 )
+
+
+# =======================
+# Copy Assets
+# =======================
+
+file(COPY ${CMAKE_SOURCE_DIR}/assets
+    DESTINATION ${CMAKE_BINARY_DIR})
+message("Assets Copied to Build Directory.")
