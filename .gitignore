@@ -1,3 +1,5 @@
 /.vs
 /out
 src/extra/createNeededDataFiles.exe
+src/extra/createVoteFile.exe
+src/extra/createUserFiles.exe

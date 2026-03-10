@@ -15,9 +15,15 @@ void welcomeScreen() {
 	if (GuiButton((Rectangle) { SCREEN_WIDTH / 2 - (textWidth * 1.4) / 2, SCREEN_HEIGHT * 0.45, textWidth * 1.4, SCREEN_HEIGHT * 0.1 }, text1)) {
 		currentPos = 1;
 	}
+	const char* text3 = "VOTE COUNT";
+	textWidth = MeasureText(text3, 45);
+	if (GuiButton((Rectangle) { SCREEN_WIDTH / 2 - (textWidth * 1.1) / 2, SCREEN_HEIGHT * 0.6, textWidth * 1.1, SCREEN_HEIGHT * 0.1 }, text3)) {
+		currentPos = 4;
+	}
 	const char* text2 = "EXIT";
 	textWidth = MeasureText(text2, 45);
-	if (GuiButton((Rectangle) { SCREEN_WIDTH / 2 - (textWidth * 1.4) / 2, SCREEN_HEIGHT * 0.6, textWidth * 1.4, SCREEN_HEIGHT * 0.1 }, text2)) {
+	if (GuiButton((Rectangle) { SCREEN_WIDTH / 2 - (textWidth * 1.4) / 2, SCREEN_HEIGHT * 0.75, textWidth * 1.4, SCREEN_HEIGHT * 0.1 }, text2)) {
 		windowClosed = true;
 	}
+	
 }

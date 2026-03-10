@@ -5,14 +5,19 @@
 #include "raygui.h"
 
 int currentPos = 0;
+bool incorrectLogin = false;
 bool windowClosed = false;
 bool mouseOnText = false;
 struct Candidate readCandidates[CANDIDATE_NUM];
+struct CandidateVote readCandidateVotes[CANDIDATE_NUM];
 Texture2D CandidatePfp[CANDIDATE_NUM];
 
 int main() {
 	int z, counter = 0;
 	if ((z = readCandidateData()) == 1) {
+		return 1;
+	}
+	if ((z = readCandidateVoteData()) == 1) {
 		return 1;
 	}
 	
@@ -38,6 +43,9 @@ int main() {
 				break;
 			case 3:
 				prScreen();
+				break;
+			case 4:
+				showVotesScreen();
 				break;
 		}
 		if (mouseOnText) {

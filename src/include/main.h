@@ -11,11 +11,22 @@
 extern int currentPos;
 extern bool windowClosed;
 extern bool mouseOnText;
+extern bool incorrectLogin;
 struct Candidate {
 	char name[20];
 	char img[100];
 };
+struct CandidateVote {
+	char name[20];
+	int fptp;
+	int pr;
+};
+struct user {
+	char voterId[8];
+	unsigned long hash;
+};
 extern struct Candidate readCandidates[CANDIDATE_NUM];
+extern struct CandidateVote readCandidateVotes[CANDIDATE_NUM];
 extern Texture2D CandidatePfp[CANDIDATE_NUM];
 #endif
 

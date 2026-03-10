@@ -1,6 +1,7 @@
 #include "main.h"
 #include "screens.h"
 #include "raygui.h"
+#include "db.h"
 
 void backgroundRect() {
 	Rectangle backgroundRec = { WELCOME_PADDING, WELCOME_PADDING, SCREEN_WIDTH - WELCOME_PADDING * 2, SCREEN_HEIGHT - WELCOME_PADDING * 2 };
@@ -24,7 +25,6 @@ void drawGridRect(Rectangle gridRect, int n) {
 	Vector2 origin = { 0, 0 };
 	DrawTexturePro(CandidatePfp[n], avatarSrc, avatarDest, origin, 0, WHITE);
 
-	const char* name = "Test A";
 	int textSize = 20;
 	int textWidth = MeasureText(readCandidates[n].name, textSize);
 	DrawText(readCandidates[n].name, gridRect.x + (gridRect.width / 2) - (textWidth / 2), avatarDest.y + avatarDest.height + 10, textSize, BLACK);
@@ -32,13 +32,20 @@ void drawGridRect(Rectangle gridRect, int n) {
 	const char* text3 = "VOTE";
 	textWidth = MeasureText(text3, textSize);
 	if (GuiButton((Rectangle) { gridRect.x + (gridRect.width / 2) / 2 - (textWidth) / 2, avatarDest.y + avatarDest.height + 50, textWidth * 2.4, gridRect.height * 0.25 }, text3)) {
-		currentPos = 0;
+		if (currentPos == 2) {
+			currentPos = 3;
+			updateCandidateVoteData(1, n);
+		}
+		else if (currentPos == 3) {
+			currentPos = 4;
+			updateCandidateVoteData(2, n);
+		}
 	}
 
 	DrawRectangleLines(gridRect.x, gridRect.y, gridRect.width, gridRect.height, BLUE);
 }
 
-void gridVote(int n, int row) {
+void gridVote(int n) {
 	int i;
 	Rectangle GridPos = { WELCOME_PADDING, WELCOME_PADDING * 3.5 , 175, 200}; // 150W
 	for (i = 0; i < n; i++) {
@@ -50,6 +57,46 @@ void gridVote(int n, int row) {
 			GridPos.x += GridPos.width + 25; // 55
 		}
 		drawGridRect(GridPos, i);
+	}
+}
+
+void showVoteGridRect(Rectangle gridRect, int n) {
+	DrawRectangleRec(gridRect, SKYBLUE);
+
+	Rectangle avatarSrc = { 0, 0, CandidatePfp[n].width, CandidatePfp[n].height };
+	int imgW = 75;
+	int imgH = 75;
+	Rectangle avatarDest = { gridRect.x + (gridRect.width / 2) - (imgW / 2), gridRect.y + 10, imgW, imgH };
+	Vector2 origin = { 0, 0 };
+	DrawTexturePro(CandidatePfp[n], avatarSrc, avatarDest, origin, 0, WHITE);
+
+	int textSize = 20;
+	int textWidth = MeasureText(readCandidates[n].name, textSize);
+	DrawText(readCandidateVotes[n].name, gridRect.x + (gridRect.width / 2) - (textWidth / 2), avatarDest.y + avatarDest.height + 10, textSize, BLACK);
+
+	textSize = 20;
+	textWidth = MeasureText(TextFormat("FPTP: %d", readCandidateVotes[n].fptp), textSize);
+	DrawText(TextFormat("FPTP: %d", readCandidateVotes[n].fptp), gridRect.x + (gridRect.width / 2) / 2 - (textWidth) / 5, avatarDest.y + avatarDest.height + 50, textSize, BLACK);
+
+	textSize = 20;
+	textWidth = MeasureText(TextFormat("PR: %d", readCandidateVotes[n].pr), textSize);
+	DrawText(TextFormat("PR: %d", readCandidateVotes[n].pr), gridRect.x + (gridRect.width / 2) / 2 - (textWidth) / 5, avatarDest.y + avatarDest.height + 70, textSize, BLACK);
+
+	DrawRectangleLines(gridRect.x, gridRect.y, gridRect.width, gridRect.height, BLUE);
+}
+
+void showVoteGrid(int n) {
+	int i;
+	Rectangle GridPos = { WELCOME_PADDING, WELCOME_PADDING * 3.5 , 175, 200 }; // 150W
+	for (i = 0; i < n; i++) {
+		if (i % (CANDIDATE_NUM / 2) == 0 && i != 0) {
+			GridPos.x = WELCOME_PADDING;
+			GridPos.y += GridPos.height + 10;
+		}
+		else if (i != 0) {
+			GridPos.x += GridPos.width + 25; // 55
+		}
+		showVoteGridRect(GridPos, i);
 	}
 }
 
