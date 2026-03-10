@@ -1,15 +1,22 @@
 #include "raylib.h"
 #include<stdio.h>
 
+#define SCREEN_WIDTH 1280
+#define SCREEN_HEIGHT 720
+#define TARGET_FPS 100
+#define CANDIDATE_NUM 12
+
 #ifndef GLOBALS
 #define GLOBALS
 extern int currentPos;
 extern bool windowClosed;
 extern bool mouseOnText;
+struct Candidate {
+	char name[20];
+	char img[100];
+};
+extern struct Candidate readCandidates[CANDIDATE_NUM];
+extern Texture2D CandidatePfp[CANDIDATE_NUM];
 #endif
-
-#define SCREEN_WIDTH 1280
-#define SCREEN_HEIGHT 720
-#define TARGET_FPS 100
 
 #define WELCOME_PADDING 50

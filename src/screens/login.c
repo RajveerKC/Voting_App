@@ -26,7 +26,7 @@ void loginScreen() {
 
 	// Pin Input
 	const char* text2 = "Pin";
-	int inputBoxWidth2 = MeasureText("0000", 45);
+	int inputBoxWidth2 = MeasureText("8888", 45);
 	textWidth = MeasureText(text2, 45);
 	GuiSetStyle(DEFAULT, TEXT_SIZE, 45);
 	Rectangle textBox2 = { SCREEN_WIDTH / 2, SCREEN_HEIGHT * 0.6 + 8, inputBoxWidth2 - 5, inputBoxWidth2 * 9 / 16 };

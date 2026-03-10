@@ -14,20 +14,20 @@ void biggerbackgroundRect() {
 	DrawRectangleLines(backgroundRec.x, backgroundRec.y, backgroundRec.width, backgroundRec.height, BLACK);
 }
 
-void drawGridRect(Rectangle gridRect, Texture2D img, int n) {
+void drawGridRect(Rectangle gridRect, int n) {
 	DrawRectangleRec(gridRect, SKYBLUE);
 
-	Rectangle avatarSrc = { 0, 0, img.width, img.height };
+	Rectangle avatarSrc = { 0, 0, CandidatePfp[n].width, CandidatePfp[n].height};
 	int imgW = 75;
 	int imgH = 75;
 	Rectangle avatarDest = { gridRect.x + (gridRect.width / 2) - (imgW / 2), gridRect.y + 10, imgW, imgH};
 	Vector2 origin = { 0, 0 };
-	DrawTexturePro(img, avatarSrc, avatarDest, origin, 0, WHITE);
+	DrawTexturePro(CandidatePfp[n], avatarSrc, avatarDest, origin, 0, WHITE);
 
 	const char* name = "Test A";
 	int textSize = 20;
-	int textWidth = MeasureText(name, textSize);
-	DrawText(name, gridRect.x + (gridRect.width / 2) - (textWidth / 2), avatarDest.y + avatarDest.height + 10, textSize, BLACK);
+	int textWidth = MeasureText(readCandidates[n].name, textSize);
+	DrawText(readCandidates[n].name, gridRect.x + (gridRect.width / 2) - (textWidth / 2), avatarDest.y + avatarDest.height + 10, textSize, BLACK);
 
 	const char* text3 = "VOTE";
 	textWidth = MeasureText(text3, textSize);
@@ -40,23 +40,16 @@ void drawGridRect(Rectangle gridRect, Texture2D img, int n) {
 
 void gridVote(int n, int row) {
 	int i;
-	Texture2D temp = LoadTexture("assets/Default Avatar.png");
-	if (temp.id == 0) {
-		printf("\n\nFailed to import Image.");
-	}
- 	Rectangle avatarSrc = { 0, 0, temp.width, temp.height };
-	Rectangle avatarDest = { WELCOME_PADDING / 2 + 100, 100, 75, 75 };
-	Vector2 origin = { 0, 0 };
 	Rectangle GridPos = { WELCOME_PADDING, WELCOME_PADDING * 3.5 , 175, 200}; // 150W
 	for (i = 0; i < n; i++) {
-		if (i % 6 == 0 && i != 0) {
+		if (i % (CANDIDATE_NUM / 2) == 0 && i != 0) {
 			GridPos.x = WELCOME_PADDING;
 			GridPos.y += GridPos.height + 10;
 		}
 		else if (i != 0 ){
 			GridPos.x += GridPos.width + 25; // 55
 		}
-		drawGridRect(GridPos, temp, i);
+		drawGridRect(GridPos, i);
 	}
 }
 

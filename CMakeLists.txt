@@ -73,4 +73,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 
 file(COPY ${CMAKE_SOURCE_DIR}/assets
     DESTINATION ${CMAKE_BINARY_DIR})
-message("Assets Copied to Build Directory.")
+file(COPY ${CMAKE_SOURCE_DIR}/data
+    DESTINATION ${CMAKE_BINARY_DIR})
+
+message("Assets and Data Copied to Build Directory.")

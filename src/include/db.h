@@ -1,0 +1,2 @@
+int readCandidateData();
+int readCandidatePfps();
