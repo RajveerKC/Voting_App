@@ -96,7 +96,7 @@ int checkLogin(const char* voterid, const char* pin) {
 				printf("\nLogged In Successfully\n");
 				strcpy(voterid, "");
 				strcpy(pin, "");
-				incorrectLogin = true;
+				incorrectLogin = false;
 				return 0;
 			}
 		}

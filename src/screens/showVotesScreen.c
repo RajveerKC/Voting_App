@@ -7,7 +7,7 @@ void showVotesScreen() {
 
 	biggerbackgroundRect();
 	// Banner Text
-	const char* welcomeText = "Votes";
+	const char* welcomeText = "Vote Count";
 	int textWidth = MeasureText(welcomeText, 100);
 	DrawText(welcomeText, SCREEN_WIDTH / 2 - textWidth / 2, SCREEN_WIDTH * 0.1 / 3, 100, RED);
 
