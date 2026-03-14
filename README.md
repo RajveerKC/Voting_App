@@ -8,14 +8,14 @@ This project was developed as a part of a C Programming class project to demonst
 * User input/output
 * Control Flow
 
-## Project Structure
-Voting_App  
-|  
-|-- assets                      # Includes all the images used in the program  
-|-- data                        # Includes all the data files used in the program  
-└─-- src                         
-&nbsp;|-- core                    # Contains the main file   
-&nbsp;|-- db                      # Contains all the data access files  
-&nbsp;|-- extra                   # Contains all the files necessary to configure the db access files  
-&nbsp;|-- include                 # Contains all the headers  
-&nbsp;|-- screens                 # Contains all the gui functions and code
+## Build Instructions
+**NOTE: Cmake and Git are required to build this project.**
+### Generate Makefiles
+```
+cmake ..
+```
+### Build the Project
+```
+cmake --build .
+```
+No need to do any of this if the project has been opened as a CMake Project in Visual Studio and it does all the necessary configurations automatically.
