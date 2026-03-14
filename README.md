@@ -13,9 +13,9 @@ Voting_App
 |  
 |-- assets                      # Includes all the images used in the program  
 |-- data                        # Includes all the data files used in the program  
-`-- src                         
-    |-- core                    # Contains the main file   
-    |-- db                      # Contains all the data access files  
-    |-- extra                   # Contains all the files necessary to configure the db access files  
-    |-- include                 # Contains all the headers  
-    |-- screens                 # Contains all the gui functions and code
+└─-- src                         
+&nbsp;|-- core                    # Contains the main file   
+&nbsp;|-- db                      # Contains all the data access files  
+&nbsp;|-- extra                   # Contains all the files necessary to configure the db access files  
+&nbsp;|-- include                 # Contains all the headers  
+&nbsp;|-- screens                 # Contains all the gui functions and code
