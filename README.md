@@ -18,4 +18,3 @@ cmake ..
 ```
 cmake --build .
 ```
-No need to do any of this if the project has been opened as a CMake Project in Visual Studio as it does all the necessary configurations automatically.
